@@ -1,6 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
-global opcode = {NULL, NULL};
 /**
  *stack_push - pushes elements to the stack
  *@doubly: head of doubly linked list

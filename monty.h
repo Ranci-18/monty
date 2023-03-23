@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define _GNU_SOURCE
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -9,12 +10,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-typedef struct global_s
-{
-	char *ptr;
-	FILE *fd;
-}global;
-
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -31,6 +26,15 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
+typedef struct global_s
+{
+	char *ptr;
+	FILE *fd;
+	stack_t *head;
+}global;
+
+extern global opcode;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -45,6 +49,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void load_opcode_var(FILE *fd);
 void stack_push(stack_t **doubly, unsigned int line_count);
 void stack_pall(stack_t **doubly, unsigned int line_count);
 stack_t *add_doublynode(stack_t **head, const int n);
