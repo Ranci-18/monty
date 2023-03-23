@@ -47,3 +47,23 @@ void stack_pall(stack_t **doubly, unsigned int line_count)
 		current = current->next;
 	}
 }
+/**
+ *stack_pint - print the element at stack top
+ *@doubly: head node
+ *@line_count: line number
+ *
+ *
+ *Return: nothing
+ */
+void stack_pint(stack_t **doubly, unsigned int line_count)
+{
+	(void)line_count;
+
+	if (doubly == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stak empty\n");
+		free(opcode);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*doubly)->n);
+}
