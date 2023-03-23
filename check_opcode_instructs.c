@@ -61,8 +61,7 @@ void stack_pint(stack_t **doubly, unsigned int line_count)
 
 	if (doubly == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stak empty\n");
-		free(opcode);
+		fprintf(stderr, "L%u: can't pint, stak empty\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*doubly)->n);
