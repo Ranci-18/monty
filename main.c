@@ -1,10 +1,10 @@
 #include "monty.h"
 global opcode;
 /**
+ *load_opcode_var - initializes global variables
+ *@fd: file
  *
- *
- *
- *
+ *Return: nothing
  */
 void load_opcode_var(FILE *fd)
 {
@@ -16,7 +16,6 @@ void load_opcode_var(FILE *fd)
  *main - opens file and makes essential function calls
  *@argc: argument count
  *@argv: arguments
- *
  *
  *Return: nothing
  */
@@ -37,7 +36,7 @@ int main(int argc, char *argv[])
 	fd = fopen(argv[1], "r");
 	if (!fd)
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	load_opcode_var(fd);
@@ -50,7 +49,7 @@ int main(int argc, char *argv[])
 			f = check_opcode(line[0]);
 			if (!f)
 			{
-				fprintf(stderr, "L%d: unknown instruction %s\n", line_count, opcode.ptr);
+				fprintf(stderr, "L%u: unknown instruction %s\n", line_count, opcode.ptr);
 				free(buf);
 				fclose(fd);
 				exit(EXIT_FAILURE);

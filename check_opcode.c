@@ -12,6 +12,9 @@ void (*check_opcode(char *op))(stack_t **stack, unsigned int line_number)
 	instruction_t opcde[] = {
 		{"push", stack_push},
 		{"pall", stack_pall},
+		{"pint", stack_pint},
+		{"pop", stack_pop},
+		{"swap", stack_swap},
 		{NULL, NULL}
 	};
 	int j;

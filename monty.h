@@ -26,13 +26,17 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
-
+/**
+*global_s - global variable
+*Description: global variable
+*
+*/
 typedef struct global_s
 {
 	char *ptr;
 	FILE *fd;
 	stack_t *head;
-}global;
+} global;
 
 extern global opcode;
 /**
@@ -52,6 +56,9 @@ typedef struct instruction_s
 void load_opcode_var(FILE *fd);
 void stack_push(stack_t **doubly, unsigned int line_count);
 void stack_pall(stack_t **doubly, unsigned int line_count);
+void stack_pint(stack_t **doubly, unsigned int line_count);
+void stack_pop(stack_t **doubly, unsigned int line_count);
+void stack_swap(stack_t **doubly, unsigned int line_count);
 stack_t *add_doublynode(stack_t **head, const int n);
 void free_doubly_ll(stack_t *head);
 void (*check_opcode(char *op))(stack_t **stack, unsigned int line_number);

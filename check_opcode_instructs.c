@@ -61,8 +61,54 @@ void stack_pint(stack_t **doubly, unsigned int line_count)
 
 	if (doubly == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stak empty\n", line_count);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*doubly)->n);
+}
+/**
+*stack_pop - pops/removes element at stop of the stack
+*@doubly: head node
+*@line_count: line number
+*
+*Return: nothing
+*/
+void stack_pop(stack_t **doubly, unsigned int line_count)
+{
+	stack_t *temp;
+
+	if (doubly == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_count);
+		exit(EXIT_FAILURE);
+	}
+	temp = *doubly;
+	*doubly = (*doubly)->next;
+	free(temp);
+}
+/**
+*stack_swap - swaps the top two elements
+*@doubly: head node
+*@line_count: line number
+*
+*Return: nothing
+*/
+void stack_swap(stack_t **doubly, unsigned int line_count)
+{
+	int x = 0;
+	stack_t *temp = NULL;
+
+	for (temp = *doubly; *doubly != NULL; temp = temp->next, x++)
+		;
+	if (x < 2)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_count);
+		exit(EXIT_FAILURE);
+	}
+	temp = *doubly;
+	*doubly = (*doubly)->next;
+	temp->next = (*doubly)->next;
+	temp->prev = *doubly;
+	(*doubly)->next = temp;
+	(*doubly)->prev = NULL;
 }

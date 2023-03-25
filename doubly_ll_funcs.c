@@ -4,7 +4,6 @@
  *@head: head node
  *@n: node values
  *
- *
  *Return: the new node
  */
 stack_t *add_doublynode(stack_t **head, const int n)
